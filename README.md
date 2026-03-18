@@ -11,33 +11,34 @@ The server is configured with three MCP namespaces: **storage**, **advisor**, an
 - [Azure CLI](https://learn.microsoft.com/cli/azure/install-azure-cli) (for post-deployment role assignments)
 
 ## Architecture Diagram
-┌──────────────────────────────────────┐
-│ Microsoft Foundry / Copilot Studio   │
-│ AI Agents                            │
-└───────────────┬──────────────────────┘
-                │ HTTPS (MCP Protocol)
-                ▼
-┌──────────────────────────────────────┐
-│ Azure MCP Server (2.0‑beta)          │
-│ Azure Container App                  │
-│ - storage namespace                 │
-│ - advisor namespace                 │
-│ - compute namespace                 │
-└───────────────┬──────────────────────┘
-                │ Managed Identity (RBAC)
-                ▼
-┌──────────────────────────────────────┐
-│ Azure Control Plane                  │
-│  • Azure Advisor                    │
-│  • Azure Compute (VMs)              │
-│  • Azure Storage Accounts           │
-└──────────────────────────────────────┘
 
-(Optional)
-┌──────────────────────────────────────┐
-│ Application Insights                │
-│ Telemetry & diagnostics             │
-└──────────────────────────────────────┘
+    ┌──────────────────────────────────────┐
+    │ Microsoft Foundry / Copilot Studio   │
+    │ AI Agents                            │
+    └───────────────┬──────────────────────┘
+                    │ HTTPS (MCP Protocol)
+                    ▼
+    ┌──────────────────────────────────────┐
+    │ Azure MCP Server (2.0‑beta)          │
+    │ Azure Container App                  │
+    │ - storage namespace                 │
+    │ - advisor namespace                 │
+    │ - compute namespace                 │
+    └───────────────┬──────────────────────┘
+                    │ Managed Identity (RBAC)
+                    ▼
+    ┌──────────────────────────────────────┐
+    │ Azure Control Plane                  │
+    │  • Azure Advisor                    │
+    │  • Azure Compute (VMs)              │
+    │  • Azure Storage Accounts           │
+    └──────────────────────────────────────┘
+    
+    (Optional)
+    ┌──────────────────────────────────────┐
+    │ Application Insights                │
+    │ Telemetry & diagnostics             │
+    └──────────────────────────────────────┘
 
 ## Quick Start
 
