@@ -39,7 +39,7 @@ var entraAppScopeDisplayName = 'Azure MCP Tools ReadWrite'
 var entraAppScopeDescription = 'Delegated permission for Azure MCP tool calls'
 
 // VS Code client app ID for pre-authorization
-var vsCodeClientAppId = 'aebc6443-996d-45c2-90f0-388ff96faa56'
+var vsCodeClientAppId = '<insert app ID>'
 
 resource entraApp 'Microsoft.Graph/applications@v1.0' = {
   uniqueName: entraAppUniqueName 
