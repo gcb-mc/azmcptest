@@ -148,12 +148,12 @@ Once deployed, connect your Microsoft Foundry agent to the Azure MCP Server runn
 4. Select the **+ Add** in the tools section
 5. Select the **Custom** tab 
 6. Choose **Model Context Protocol** as the tool and click **Create** ![Find MCP](images/azure__create-aif-agent-mcp-tool.png)
-7. Configure the MCP connection ![Create MCP Connection](images/azure_add_aif_mcp_connection.png)
+7. Configure the MCP connection 
    - Enter the `CONTAINER_APP_URL` value as the Remote MCP Server endpoint. 
    - Select **Microsoft Entra** → **Project Managed Identity**  as the authentication method
    - Enter your `ENTRA_APP_CLIENT_ID` as the audience.
    - Click **Connect** to associate this connection to the agent
-
+![Create MCP Connection](images/azure_add_aif_mcp_connection.png)
 Your agent is now ready to assist you! It can answer your questions and leverage tools from the Azure MCP Server to perform Azure operations on your behalf.
 
 ## Clean Up
