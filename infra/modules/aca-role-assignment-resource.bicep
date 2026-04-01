@@ -15,7 +15,7 @@ var resourceIdParts = split(storageResourceId, '/')
 var resourceGroupName = resourceIdParts[4]
 
 module storageRoleAssignment './aca-role-assignment-resource-storage.bicep' = {
-  name: 'aca-role-assignment-storage-${roleDefinitionId}'
+  name: guid('aca-role', storageResourceId, roleDefinitionId)
   scope: resourceGroup(resourceGroupName)
   params: {
     storageResourceId: storageResourceId

@@ -11,8 +11,8 @@
     "acaName": {
       "value": "azure-mcp-storage-server"
     },
-    "storageResourceId": {
-      "value": "${STORAGE_RESOURCE_ID}"
+    "storageResourceIds": {
+      "value": "${STORAGE_RESOURCE_IDS}"
     },
     "foundryProjectResourceId": {
       "value": "${FOUNDRY_PROJECT_RESOURCE_ID}"
@@ -23,11 +23,11 @@
     "serviceManagementReference": {
       "value": ""
     },
-    "vmResourceGroupName": {
-      "value": "${VM_RESOURCE_GROUP_NAME}"
+    "readerResourceGroupNames": {
+      "value": "${READER_RESOURCE_GROUP_NAMES}"
     },
-    "advisorResourceGroupName": {
-      "value": "${ADVISOR_RESOURCE_GROUP_NAME}"
+    "monitoredVmResourceIds": {
+      "value": "${MONITORED_VM_RESOURCE_IDS}"
     }
   }
 }

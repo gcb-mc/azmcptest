@@ -1,0 +1,16 @@
+## Run locally to generate the file
+$skus = @("Standard_B2s","Standard_B2ms","Standard_D2s_v3","Standard_D4s_v3","Standard_D2s_v5","Standard_D4s_v5","Standard_E2s_v5","Standard_E4s_v5")
+$results = @()
+foreach ($sku in $skus) {
+    $url = "https://prices.azure.com/api/retail/prices?`$filter=serviceName eq 'Virtual Machines' and armSkuName eq '$sku' and armRegionName eq 'eastus2' and priceType eq 'Consumption' and contains(meterName,'Spot') eq false and contains(meterName,'Low Priority') eq false"
+    $data = (Invoke-RestMethod -Uri $url).Items
+    foreach ($item in $data) {
+        $results += [PSCustomObject]@{
+            SKU = $item.armSkuName
+            Meter = $item.meterName
+            UnitPrice = $item.unitPrice
+            Currency = $item.currencyCode
+        }
+    }
+}
+$results | Export-Csv -Path "vm-pricing-eastus2.csv" -NoTypeInformation

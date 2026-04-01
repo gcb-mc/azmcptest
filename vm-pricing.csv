@@ -1,0 +1,15 @@
+SKU,vCPUs,RAM_GB,Linux_hr,Windows_hr,Category,Series
+Standard_B2s,2,4,0.0416,0.0936,Burstable,B
+Standard_B2ms,2,8,0.0832,0.1352,Burstable,B
+Standard_B4ms,4,16,0.166,0.2704,Burstable,B
+Standard_D2s_v3,2,8,0.096,0.192,General Purpose,Dsv3
+Standard_D4s_v3,4,16,0.192,0.384,General Purpose,Dsv3
+Standard_D8s_v3,8,32,0.384,0.768,General Purpose,Dsv3
+Standard_D2s_v5,2,8,0.096,0.192,General Purpose,Dsv5
+Standard_D4s_v5,4,16,0.192,0.384,General Purpose,Dsv5
+Standard_D8s_v5,8,32,0.384,0.768,General Purpose,Dsv5
+Standard_E2s_v5,2,16,0.126,0.222,Memory Optimized,Esv5
+Standard_E4s_v5,4,32,0.252,0.444,Memory Optimized,Esv5
+Standard_E8s_v5,8,64,0.504,0.888,Memory Optimized,Esv5
+Standard_F2s_v2,2,4,0.085,0.181,Compute Optimized,Fsv2
+Standard_F4s_v2,4,8,0.17,0.362,Compute Optimized,Fsv2

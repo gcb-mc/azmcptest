@@ -34,9 +34,8 @@ param azureAdTenantId string
 @description('Azure AD Client ID')
 param azureAdClientId string
 
-@description('Azure MCP Server namespaces to enable. Must specify at least one namespace and no more than three.')
+@description('Azure MCP Server namespaces to enable.')
 @minLength(1)
-@maxLength(3)
 param namespaces array
 
 var baseArgs = [
