@@ -1,6 +1,6 @@
 # Azure Advisor Multi-Agent Architecture with ServiceNow Integration
 
-> An intelligent, multi-agent system built on **Azure AI Foundry** that automatically surfaces Azure Advisor recommendations and Azure Monitor alerts in Microsoft Teams, allows users (or an AI agent) to select the best remediation action, and auto-creates a fully enriched **ServiceNow incident ticket** — all secured via **Entra ID On-Behalf-Of (OBO)** authentication.
+> An intelligent, multi-agent system built on **Microsoft Foundry** that automatically surfaces Azure Advisor recommendations and Azure Monitor alerts in Microsoft Teams, allows users (or an AI agent) to select the best remediation action, and auto-creates a fully enriched **ServiceNow incident ticket** — all secured via **Entra ID On-Behalf-Of (OBO)** authentication.
 
 ---
 
@@ -22,7 +22,7 @@
 
 ## Architecture Overview
 
-This solution uses three coordinated AI agents hosted in **Azure AI Foundry**, connected to Microsoft Teams via **Azure Bot Service**, and secured through **Microsoft Entra ID**. The agents use the **Model Context Protocol (MCP)** as the tool interface to query Azure APIs using delegated user permissions — ensuring all data is scoped to what the authenticated user has access to.
+This solution uses three coordinated AI agents hosted in **Microsoft Foundry**, connected to Microsoft Teams via **Azure Bot Service**, and secured through **Microsoft Entra ID**. The agents use the **Model Context Protocol (MCP)** as the tool interface to query Azure APIs using delegated user permissions — ensuring all data is scoped to what the authenticated user has access to.
 
 ```
 User (Teams) → Foundry Agent Runtime → azure-advisor_agent (data pull)
@@ -49,8 +49,8 @@ flowchart TD
         EntraID --> UserToken --> OBOToken
     end
 
-    %% AZURE AI FOUNDRY AGENT RUNTIME
-    subgraph FOUNDRY["⚙️ Azure AI Foundry — Agent Runtime"]
+    %% Microsoft FOUNDRY AGENT RUNTIME
+    subgraph FOUNDRY["⚙️ Microsoft Foundry — Agent Runtime"]
         direction TB
         Agent["🤖 Orchestrator Agent\n(Persistent Agent Thread)"]
         MCPTool["🔧 MCP Tool Server\n(Model Context Protocol)"]
@@ -137,7 +137,7 @@ flowchart TD
 The user opens a chat with the AI agent in Microsoft Teams and sends a message such as:
 > *"Show me my Azure recommendations"* or *"What alerts are active in my subscription?"*
 
-The message is routed through **Azure Bot Service** to the **Azure AI Foundry Agent Runtime**, which maintains a persistent conversation thread per user session.
+The message is routed through **Azure Bot Service** to the **Microsoft Foundry Agent Runtime**, which maintains a persistent conversation thread per user session.
 
 ### Step 2 — Authentication via Entra ID OBO
 Before any Azure API calls are made, the **Foundry Agent** triggers the **Entra ID On-Behalf-Of (OBO)** flow:
@@ -359,7 +359,7 @@ The system uses the **OAuth 2.0 On-Behalf-Of (OBO)** flow to ensure all Azure AP
 
 | Technology | Purpose |
 |-----------|---------|
-| **Azure AI Foundry** | Agent runtime, orchestration, persistent threads |
+| **Microsoft Foundry** | Agent runtime, orchestration, persistent threads |
 | **Model Context Protocol (MCP)** | Tool interface for agent-to-API communication |
 | **Microsoft Entra ID** | Identity, OBO authentication, RBAC enforcement |
 | **Azure Advisor** | Cloud recommendations (cost, security, performance, reliability) |
@@ -376,7 +376,7 @@ The system uses the **OAuth 2.0 On-Behalf-Of (OBO)** flow to ensure all Azure AP
 ### Prerequisites
 
 - [ ] **Azure Subscription** with Owner or Contributor role
-- [ ] **Azure AI Foundry** workspace provisioned
+- [ ] **Microsoft Foundry** workspace provisioned
 - [ ] **Microsoft Entra ID** App Registration with OBO permissions configured
 - [ ] **Azure Bot Service** resource linked to Teams channel
 - [ ] **ServiceNow instance** with Table API access and OAuth app configured
@@ -387,11 +387,11 @@ The system uses the **OAuth 2.0 On-Behalf-Of (OBO)** flow to ensure all Azure AP
 
 1. **Register Entra ID App** — configure delegated permissions for Azure Management and Monitor APIs; enable OBO flow.
 2. **Deploy MCP Tool Server** — host the MCP server (Azure Container App or App Service) with ARM/Monitor API bindings.
-3. **Create Foundry Agents** — deploy `azure-advisor_agent`, `selection_agent`, and `servicenow_agent` in Azure AI Foundry Studio.
+3. **Create Foundry Agents** — deploy `azure-advisor_agent`, `selection_agent`, and `servicenow_agent` in Microsoft Foundry Studio.
 4. **Configure Azure Bot Service** — connect to Teams channel and point to the Foundry Agent endpoint.
 5. **Set up Logic App** — create the ServiceNow ticket creation workflow with the payload mapping defined above.
 6. **Test end-to-end** — send *"Show my Azure recommendations"* from Teams and verify ticket creation in ServiceNow.
 
 ---
 
-*Generated with Azure AI Foundry Multi-Agent Architecture — March 2026*
+*Generated with Microsoft Foundry Multi-Agent Architecture — March 2026*
